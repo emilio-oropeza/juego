@@ -12,134 +12,167 @@ window.addEventListener("load",function() {
                 [],
                 [],
                 [],
-                ['up', 'jump']
+                []
             ]).touch()
     
-    var SPRITE_BOX = 1;
+    Q.SPRITE_ENEMY = 4;
+    Q.SPRITE_PLAYER = 1;
     
-    Q.gravityY = 2000;
+    Q.gravityY = 1000;
     
     Q.Sprite.extend("Player",{
     
-      init: function(p) {
+        init: function(p) {
+            this._super(p,{
+                sheet: "player",
+                sprite: "player",
+                collisionMask: Q.SPRITE_ENEMY, 
+                type: Q.SPRITE_PLAYER,
+                x: 40,
+                y: 555,
+                standingPoints: [ [ -16, 44], [ -23, 35 ], [-23,-48], [23,-48], [23, 35 ], [ 16, 44 ]],
+                duckingPoints : [ [ -16, 44], [ -23, 35 ], [-23,-10], [23,-10], [23, 35 ], [ 16, 44 ]],
+                speed: 500,
+                jump: -700
+            });
+        
+            this.p.points = this.p.standingPoints;
+        
+            this.add("2d, animation");
+
+            this.on("enemy.hit","enemyHit");
+        },
+
+        enemyHit: function(data) {
+            var col = data.col;
+            var enemy = data.enemy;
+            this.p.vy = -150;
+            if (col.normalX == 1) {
+                // Hit from left.
+                this.p.x -=15;
+                this.p.y -=15;
+            }else {
+                // Hit from right;
+                this.p.x +=15;
+                this.p.y -=15;
+            }
+            this.p.immune = true;
+            this.p.immuneTimer = 0;
+            this.p.immuneOpacity = 1;
+            this.p.strength -= 25;
+            if (this.p.strength == 0) {
+                this.resetLevel();
+            }
+        },
     
-        this._super(p,{
-          sheet: "player",
-          sprite: "player",
-          collisionMask: SPRITE_BOX, 
-          x: 40,
-          y: 555,
-          standingPoints: [ [ -16, 44], [ -23, 35 ], [-23,-48], [23,-48], [23, 35 ], [ 16, 44 ]],
-          duckingPoints : [ [ -16, 44], [ -23, 35 ], [-23,-10], [23,-10], [23, 35 ], [ 16, 44 ]],
-          speed: 500,
-          jump: -700
-        });
     
-        this.p.points = this.p.standingPoints;
-    
-        this.add("2d, animation");
-      },
-    
-      step: function(dt) {
-        this.p.vx += (this.p.speed - this.p.vx)/4;
-    
-        if(this.p.y > 900) {
-          this.p.y = 900;
-          this.p.landed = 1;
-          this.p.vy = 0;
-        } else {
-          this.p.landed = 0;
+        step: function(dt) {
+            this.p.vx += (this.p.speed - this.p.vx)/4;
+        
+            if(this.p.y > 900) {
+                this.p.y = 900;
+                this.p.landed = 1;
+                this.p.vy = 0;
+            } else {
+                this.p.landed = 0;
+            }
+        
+            if(Q.inputs['up'] && this.p.landed > 0) {
+                this.p.vy = this.p.jump;
+            } 
+        
+            this.p.points = this.p.standingPoints;
+            if(this.p.landed) {
+                if(Q.inputs['down']) { 
+                    this.play("duck_right");
+                    this.p.points = this.p.duckingPoints;
+                } else {
+                    this.play("walk_right");
+                }
+            } else {
+                this.play("jump_right");
+            }
+        
+            this.stage.viewport.centerOn(this.p.x + 300, 400 );
+        
         }
-    
-        if(Q.inputs['up'] && this.p.landed > 0) {
-          this.p.vy = this.p.jump;
-        } 
-    
-        this.p.points = this.p.standingPoints;
-        if(this.p.landed) {
-          if(Q.inputs['down']) { 
-            this.play("duck_right");
-            this.p.points = this.p.duckingPoints;
-          } else {
-            this.play("walk_right");
+    });
+
+    Q.Sprite.extend("Nieve", {
+        init: function(p) {
+            var player = Q("Player").first();
+            this._super(p, {
+                x: player.p.x + Q.width + 50,
+                y: 900,
+                sheet: "nieve",
+                sprite: "nieve",
+                type: Q.SPRITE_ENEMY,
+                collisionMask: Q.SPRITE_PLAYER,
+                gravity: 0,
+                vx: -600 + 200 * Math.random(),
+                vy: 0,
+                ay: 0,
+                scale: 0.5
+            });
+
+            this.p.points = this.p.standingPoints;
+            
+            this.add("2d, animation");
+            this.on("bump.top",this,"die");
+            this.on("hit.sprite",this,"hit");
+        },
+
+        step: function(dt) {
+            if(this.p.dead) {
+                this.del('2d');
+                this.p.deadTimer++;
+                if (this.p.deadTimer > 24) {
+                // Dead for 24 frames, remove it.
+                this.destroy();
+                }
+                return;
+            }
+        
+            this.play('move');
+        },
+
+        hit: function(col) {
+            if(col.obj.isA("Player") && !col.obj.p.immune && !this.p.dead) {
+                col.obj.trigger('enemy.hit', {"enemy":this,"col":col});
+            }
+        },
+        die: function(col) {
+            console.log("die");
+            if(col.obj.isA("Player")) {
+                this.p.vx=this.p.vy=0;
+                this.play('dead');
+                this.p.dead = true;
+                var that = this;
+                col.obj.p.vy = -300;
+                this.p.deadTimer = 0;
+            }
+        }
+    });
+
+    Q.GameObject.extend("NieveThrower",{
+        init: function() {
+          this.p = {
+            launchDelay: 4,
+            launchRandom: 1,
+            launch: 2
           }
-        } else {
-          this.play("jump_right");
-        }
-    
-        this.stage.viewport.centerOn(this.p.x + 300, 400 );
-    
-      }
-    });
-    
-    Q.Sprite.extend("Box",{
-      init: function() {
-    
-        var levels = [ 865, 840, 800, 750 ];
-    
-        var player = Q("Player").first();
-        this._super({
-          x: player.p.x + Q.width + 50,
-          y: 899,//levels[Math.floor(Math.random() * 3)],
-          frame: Math.random() < 0.5 ? 1 : 0,
-          scale: 2,
-          type: SPRITE_BOX,
-          sheet: "crates",
-          vx: -600 + 200 * Math.random(),
-          vy: 0,
-          ay: 0,
-          theta: (300 * Math.random() + 200) * (Math.random() < 0.5 ? 1 : -1)
-        });
-    
-    
-        this.on("hit");
-      },
-    
-      step: function(dt) {
-        this.p.x += this.p.vx * dt;
-    
-    
-        this.p.vy += this.p.ay * dt;
-        this.p.y += this.p.vy * dt;
-        if(this.p.y != 565) {
-          this.p.angle += this.p.theta * dt;
-        }
-    
-        if(this.p.y > 800) { this.destroy(); }
-    
-      },
-    
-      hit: function() {
-        this.p.type = 0;
-        this.p.collisionMask = Q.SPRITE_NONE;
-        this.p.vx = 200;
-        this.p.ay = 400;
-        this.p.vy = -300;
-        this.p.opacity = 0.5;
-      }
+        },
       
-    
-    });
-    
-    Q.GameObject.extend("BoxThrower",{
-      init: function() {
-        this.p = {
-          launchDelay: 0.75,
-          launchRandom: 1,
-          launch: 2
+        update: function(dt) {
+          this.p.launch -= dt;
+      
+          if(this.p.launch < 0) {
+            this.stage.insert(new Q.Nieve());
+            this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
+          }
         }
-      },
-    
-      update: function(dt) {
-        this.p.launch -= dt;
-    
-        if(this.p.launch < 0) {
-          this.stage.insert(new Q.Box());
-          this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
-        }
-      }
-    
-    });
+      
+      });
     
     
     Q.scene("level1",function(stage) {
@@ -154,21 +187,27 @@ window.addEventListener("load",function() {
                                     speedX: 1.0,
                                     y: 440 }));
     
-      stage.insert(new Q.BoxThrower());
+      //stage.insert(new Q.BoxThrower());
+      stage.insert(new Q.NieveThrower());
+      
     
       stage.insert(new Q.Player());
       stage.add("viewport");
     
     });
       
-    Q.load("player.json, juanito-sprite.png, background2.png, piso2.png, crates.png, crates.json", function() {
+    Q.load("player.json, juanito-sprite.png, background2.png, piso2.png, enemigo_nieve.png, nieve.json", function() {
         Q.compileSheets("juanito-sprite.png","player.json");
-        Q.compileSheets("crates.png","crates.json");
+        Q.compileSheets("enemigo_nieve.png","nieve.json");
         Q.animations("player", {
-          walk_right: { frames: [0,1,2,3,4,5,6,7], rate: 1/8, flip: false, loop: true },
+          walk_right: { frames: [0,1,2,3,4,5,6,7], rate: 1/10, flip: false, loop: true },
           jump_right: { frames: [7], rate: 1/10, flip: false },
           stand_right: { frames:[7], rate: 1/10, flip: false },
           duck_right: { frames: [7], rate: 1/10, flip: false },
+        });
+        Q.animations("nieve", {
+            move: { frames: [0,1,2,3], rate: 1/10, flip: false, loop:true},
+            dead: { frames: [2], rate: 1/10 }
         });
         Q.stageScene("level1");
       
