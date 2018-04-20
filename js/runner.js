@@ -7,7 +7,13 @@ window.addEventListener("load",function() {
                 height:  1458, // Set the default height to 600 pixels
                 scaleToFit: true // Scale the game to fit the screen of the player's device
               })
-            .controls().touch()
+            .controls([
+                [],
+                [],
+                [],
+                [],
+                ['up', 'jump']
+            ]).touch()
     
     var SPRITE_BOX = 1;
     
