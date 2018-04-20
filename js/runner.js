@@ -100,7 +100,6 @@ window.addEventListener("load",function() {
 
     Q.Sprite.extend("Nieve", {
         init: function(p) {
-            console.log("creado");
             var player = Q("Player").first();
             this._super(p, {
                 x: player.p.x + Q.width + 50,
@@ -129,8 +128,8 @@ window.addEventListener("load",function() {
                 this.del('2d');
                 this.p.deadTimer++;
                 if (this.p.deadTimer > 24) {
-                // Dead for 24 frames, remove it.
-                this.destroy();
+                    // Dead for 24 frames, remove it.
+                    this.destroy();
                 }
                 return;
             }
@@ -139,7 +138,6 @@ window.addEventListener("load",function() {
 
             if(player.p.x - this.p.x > 800) {
                 this.destroy();
-                console.log("eliminado");
             }
         },
 
@@ -163,8 +161,8 @@ window.addEventListener("load",function() {
     Q.GameObject.extend("NieveThrower",{
         init: function() {
           this.p = {
-            launchDelay: 4,
-            launchRandom: 1,
+            launchDelay: 10,
+            launchRandom: 2,
             launch: 1
           }
         },
