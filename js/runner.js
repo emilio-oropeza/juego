@@ -100,6 +100,7 @@ window.addEventListener("load",function() {
 
     Q.Sprite.extend("Nieve", {
         init: function(p) {
+            console.log("creado");
             var player = Q("Player").first();
             this._super(p, {
                 x: player.p.x + Q.width + 50,
@@ -109,7 +110,7 @@ window.addEventListener("load",function() {
                 type: Q.SPRITE_ENEMY,
                 collisionMask: Q.SPRITE_PLAYER,
                 gravity: 0,
-                vx: -600 + 200 * Math.random(),
+                //vx: -600 + 200 * Math.random(),
                 vy: 0,
                 ay: 0,
                 scale: 0.5
@@ -123,6 +124,7 @@ window.addEventListener("load",function() {
         },
 
         step: function(dt) {
+            var player = Q("Player").first();
             if(this.p.dead) {
                 this.del('2d');
                 this.p.deadTimer++;
@@ -134,6 +136,11 @@ window.addEventListener("load",function() {
             }
         
             this.play('move');
+
+            if(player.p.x - this.p.x > 800) {
+                this.destroy();
+                console.log("eliminado");
+            }
         },
 
         hit: function(col) {
@@ -142,7 +149,6 @@ window.addEventListener("load",function() {
             }
         },
         die: function(col) {
-            console.log("die");
             if(col.obj.isA("Player")) {
                 this.p.vx=this.p.vy=0;
                 this.play('dead');
@@ -159,7 +165,7 @@ window.addEventListener("load",function() {
           this.p = {
             launchDelay: 4,
             launchRandom: 1,
-            launch: 2
+            launch: 1
           }
         },
       
