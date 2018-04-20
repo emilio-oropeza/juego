@@ -2,7 +2,11 @@ window.addEventListener("load",function() {
 
     var Q = window.Q = Quintus({ development: true })
             .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
-            .setup({maximize: true})
+            .setup({
+                width:   2330, // Set the default width to 800 pixels
+                height:  1458, // Set the default height to 600 pixels
+                scaleToFit: true // Scale the game to fit the screen of the player's device
+              })
             .controls().touch()
     
     var SPRITE_BOX = 1;
@@ -33,8 +37,8 @@ window.addEventListener("load",function() {
       step: function(dt) {
         this.p.vx += (this.p.speed - this.p.vx)/4;
     
-        if(this.p.y > 555) {
-          this.p.y = 555;
+        if(this.p.y > 900) {
+          this.p.y = 900;
           this.p.landed = 1;
           this.p.vy = 0;
         } else {
@@ -65,12 +69,12 @@ window.addEventListener("load",function() {
     Q.Sprite.extend("Box",{
       init: function() {
     
-        var levels = [ 565, 540, 500, 450 ];
+        var levels = [ 865, 840, 800, 750 ];
     
         var player = Q("Player").first();
         this._super({
           x: player.p.x + Q.width + 50,
-          y: levels[Math.floor(Math.random() * 3)],
+          y: 899,//levels[Math.floor(Math.random() * 3)],
           frame: Math.random() < 0.5 ? 1 : 0,
           scale: 2,
           type: SPRITE_BOX,
@@ -135,12 +139,14 @@ window.addEventListener("load",function() {
     Q.scene("level1",function(stage) {
     
       stage.insert(new Q.Repeater({ asset: "background2.png",
-                                    speedX: 0.5 }));
+                                    speedX: 0.5,
+                                    repeatY: false,
+                                    y:-163}));
     
       stage.insert(new Q.Repeater({ asset: "piso2.png",
                                     repeatY: false,
                                     speedX: 1.0,
-                                    y: 350 }));
+                                    y: 440 }));
     
       stage.insert(new Q.BoxThrower());
     
