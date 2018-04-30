@@ -1,0 +1,11 @@
+{
+    "bola":{"sx":0,"sy":0,"cols":1,"spacingX":0,"spacingY":0,"tilew":168,"tileh":181,"frames":1},
+    "nieve":{"sx":210,"sy":48,"cols":1,"spacingX":0,"spacingY":0,"tilew":105,"tileh":101,"frames":1},
+    "vaso":{"sx":320,"sy":18,"cols":1,"spacingX":0,"spacingY":0,"tilew":133,"tileh":163,"frames":1},
+    "guacara":{"sx":476,"sy":52,"cols":1,"spacingX":0,"spacingY":0,"tilew":142,"tileh":131,"frames":1},
+    "tarjeta":{"sx":643,"sy":39,"cols":1,"spacingX":0,"spacingY":0,"tilew":120,"tileh":131,"frames":1},
+    "bomba":{"sx":806,"sy":46,"cols":1,"spacingX":0,"spacingY":0,"tilew":90,"tileh":131,"frames":1},
+    "blast":{"sx":931,"sy":54,"cols":1,"spacingX":0,"spacingY":0,"tilew":98,"tileh":112,"frames":1},
+    "balonoro":{"sx":1049,"sy":64,"cols":1,"spacingX":0,"spacingY":0,"tilew":109,"tileh":125,"frames":1}
+}
+  

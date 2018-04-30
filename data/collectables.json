@@ -1,0 +1,5 @@
+{
+    "coin":{"sx":0,"sy":105,"cols":1,"spacingX":0,"spacingY":0,"tilew":227,"tileh":235,"frames":1},
+    "icecream":{"sx":227,"sy":0,"cols":1,"spacingX":30,"spacingY":0,"tilew":200,"tileh":340,"frames":1}
+  }
+  

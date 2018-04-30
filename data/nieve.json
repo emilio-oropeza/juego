@@ -1,5 +1,0 @@
-{
-    "robot1":{"sx":0,"sy":0,"cols":7,"tilew":600,"tileh":600,"frames":7},
-    "robot2":{"sx":0,"sy":0,"cols":24,"tilew":600,"tileh":600,"frames":24},
-    "espia":{"sx":0,"sy":0,"cols":12,"tilew":600,"tileh":600,"frames":12}
-}

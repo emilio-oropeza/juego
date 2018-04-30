@@ -1,0 +1,6 @@
+{
+    "platFutbol":{"sx":0,"sy":0,"cols":1,"spacingX":0,"spacingY":0,"tilew":410,"tileh":122,"frames":1},
+    "platRussia":{"sx":410,"sy":0,"cols":1,"spacingX":55,"spacingY":0,"tilew":419,"tileh":122,"frames":1},
+    "platSnow":{"sx":884,"sy":0,"cols":1,"spacingX":32,"spacingY":0,"tilew":438,"tileh":122,"frames":1}    
+}
+  

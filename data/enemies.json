@@ -1,0 +1,21 @@
+{
+    "arbitro1":{"sx":0,"sy":0,"cols":3,"spacingX":0,"spacingY":0,"tilew":255,"tileh":170,"frames":3},
+    "arbitro2":{"sx":0,"sy":180,"cols":4,"spacingX":0,"spacingY":0,"tilew":226,"tileh":179,"frames":4},
+    "ganma":{"sx":0,"sy":369,"cols":5,"spacingX":0,"spacingY":0,"tilew":115,"tileh":189,"frames":5},
+    "condor":{"sx":0,"sy":559,"cols":3,"spacingX":0,"spacingY":0,"tilew":352,"tileh":227,"frames":3},
+    "robben":{"sx":0,"sy":806,"cols":3,"spacingX":0,"spacingY":0,"tilew":232,"tileh":230,"frames":3},
+    "ball":{"sx":1074,"sy":880,"cols":1,"spacingX":0,"spacingY":0,"tilew":166,"tileh":166,"frames":1},
+    "fireball":{"sx":1240,"sy":742,"cols":1,"spacingX":0,"spacingY":0,"tilew":214,"tileh":304,"frames":1},
+    "iceball":{"sx":1474,"sy":850,"cols":1,"spacingX":0,"spacingY":0,"tilew":195,"tileh":196,"frames":1},
+    "nieve1":{"sx":-10,"sy":1046,"cols":3,"spacingX":0,"spacingY":0,"tilew":296,"tileh":214,"frames":3},
+    "nieve2":{"sx":-10,"sy":1270,"cols":5,"spacingX":0,"spacingY":0,"tilew":250,"tileh":238,"frames":5},
+    "messi":{"sx":-30,"sy":1518,"cols":6,"spacingX":0,"spacingY":0,"tilew":245,"tileh":185,"frames":6},
+    "chaka":{"sx":-70,"sy":1713,"cols":5,"spacingX":0,"spacingY":0,"tilew":339,"tileh":251,"frames":5},
+    "zlatan":{"sx":0,"sy":1974,"cols":7,"spacingX":0,"spacingY":0,"tilew":249,"tileh":177,"frames":7},
+    "robot1":{"sx":-40,"sy":2161,"cols":3,"spacingX":0,"spacingY":0,"tilew":321,"tileh":308,"frames":3},
+    "robot2":{"sx":-124,"sy":2479,"cols":4,"spacingX":0,"spacingY":0,"tilew":420,"tileh":323,"frames":4},
+    "suarez":{"sx":-12,"sy":2812,"cols":4,"spacingX":0,"spacingY":0,"tilew":185,"tileh":258,"frames":4},
+    "espia":{"sx":-60,"sy":3080,"cols":5,"spacingX":0,"spacingY":0,"tilew":332,"tileh":253,"frames":5},
+    "cristiano":{"sx":-50,"sy":3343,"cols":4,"spacingX":0,"spacingY":0,"tilew":279,"tileh":226,"frames":4}
+}
+  
