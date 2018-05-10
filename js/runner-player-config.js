@@ -7,16 +7,15 @@ Q.Sprite.extend("Player",{
             collisionMask: Q.SPRITE_DEFAULT | Q.SPRITE_ENEMY | Q.SPRITE_PLATFORM | Q.SPRITE_COLLECTABLE, 
             type: Q.SPRITE_PLAYER,
             x: 40,
-            y: 500,
-            standingPoints: [ [ -113, 102.5], [ -113, -102.5 ], [73,-102.5], [73,102.5]],
+            y: -3000,
+            standingPoints: [ [ -60, 102.5], [ -60, -102.5 ], [60,-102.5], [60,102.5]],
             speed: 900,
             jump: -1300,
             strength: 100,
             score: 0,
             lives: 3,
             onPlatform: false,
-            scale: 1.3,
-            currentStage: 0
+            scale: 1.3
         });
     
         this.p.points = this.p.standingPoints;
@@ -43,11 +42,16 @@ Q.Sprite.extend("Player",{
 
         this.p.vx += (this.p.speed - this.p.vx)/4;
     
-        if(this.p.y > 750) {
+        /*if(this.p.y > 750) {
             this.p.y = 750;
             this.p.landed = 1;
             this.p.vy = 0;
-        } else if(!this.p.onPlatform) {
+        } else */
+        if(this.p.y > 1500){
+            this.resetLevel();
+        }
+
+        if(!this.p.onPlatform) {
             this.p.landed = 0;
         }
     
@@ -95,6 +99,7 @@ Q.Sprite.extend("Player",{
         this.p.strength = 100;
         this.p.score = 0;
         this.animate({opacity: 1});
+        currentStage = 0;
         Q.stageScene('hud', 3, this.p);
     }
 });

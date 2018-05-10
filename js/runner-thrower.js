@@ -1,25 +1,45 @@
 
-Q.GameObject.extend("SnowLauncher",{
-    enemiesY: [200, 380, 750],
-    platformY: [390, 560],
+Q.GameObject.extend("Launcher",{
+    enemiesY: [-10, 350, 750],
+    platformY: [150, 530],
     init: function() {
       this.p = {
         launchDelay: 0.7,
         launchRandom: 2,
-        launch: 2,
-        limit: 2
+        launch: 6
       }
     },      
     update: function(dt) {
       this.p.launch -= dt;
         if(this.p.launch < 0) {
             var randomY = Math.floor(Math.random() * 3 );
-            var randomEnemy = Math.floor(Math.random() * 10 );
+            var randomEnemy = Math.floor(Math.random() * 25 );
 
             if(randomY < 2){
-                this.stage.insert(new Q.PlatformSnow({y:this.platformY[randomY] }));
+                if ( currentStage === 0) {
+                    this.stage.insert(new Q.PlatformSnow({y:this.platformY[randomY] }));
+                }
+
+                if ( currentStage === 1) {
+                    this.stage.insert(new Q.PlatformRussia({y:this.platformY[randomY] }));
+                }
+
+                if ( currentStage === 2) {
+                    this.stage.insert(new Q.PlatformFutbol({y:this.platformY[randomY] }));
+                }
+                
             } else {
-                this.stage.insert(new Q.PlatformSnow());
+                if ( currentStage === 0) {
+                    this.stage.insert(new Q.PlatformSnow());
+                }
+
+                if ( currentStage === 1) {
+                    this.stage.insert(new Q.PlatformRussia());
+                }
+
+                if ( currentStage === 2) {
+                    this.stage.insert(new Q.PlatformFutbol());
+                }
             }
             
             switch(randomEnemy) {
@@ -41,105 +61,43 @@ Q.GameObject.extend("SnowLauncher",{
                 case 5:
                     this.stage.insert(new Q.Iceball({y:this.enemiesY[randomY] }));
                     break;
-            }
-            currentEnemies++;
-            
-            this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
-        }
-    }      
-});
-
-Q.GameObject.extend("RussianLauncher",{
-    enemiesY: [200, 380, 750],
-    platformY: [390, 560],
-    init: function() {
-      this.p = {
-        launchDelay: 0.7,
-        launchRandom: 2,
-        launch: 2,
-        limit: 2
-      }
-    },      
-    update: function(dt) {
-      this.p.launch -= dt;
-        if(this.p.launch < 0) {
-            var randomY = Math.floor(Math.random() * 3 );
-            var randomEnemy = Math.floor(Math.random() * 10 );
-
-            if(randomY < 2){
-                this.stage.insert(new Q.PlatformRussia({y:this.platformY[randomY] }));
-            } else {
-                this.stage.insert(new Q.PlatformRussia());
-            }
-            
-            switch(randomEnemy) {
-                case 0:
+                case 6:
                     this.stage.insert(new Q.Robot1({y:this.enemiesY[randomY] }));
                     break;
-                case 1:
+                case 7:
                     this.stage.insert(new Q.Robot2({y:this.enemiesY[randomY] }));
                     break;
-                case 2:
+                case 8:
                     this.stage.insert(new Q.Cristiano({y:this.enemiesY[randomY] }));
                     break;
-                case 3:
+                case 9:
                     this.stage.insert(new Q.Espia({y:this.enemiesY[randomY] }));
                     break;
-                case 4:
+                case 10:
                     this.stage.insert(new Q.Suarez());
                     break;
-                case 5:
+                case 11:
                     this.stage.insert(new Q.Fireball({y:this.enemiesY[randomY] }));
                     break;
-            }
-            currentEnemies++;
-            
-            this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
-        }
-    }      
-});
-
-Q.GameObject.extend("FutbolLauncher",{
-    enemiesY: [200, 380, 750],
-    platformY: [390, 560],
-    init: function() {
-      this.p = {
-        launchDelay: 0.7,
-        launchRandom: 2,
-        launch: 2,
-        limit: 2
-      }
-    },      
-    update: function(dt) {
-      this.p.launch -= dt;
-        if(this.p.launch < 0) {
-            var randomY = Math.floor(Math.random() * 3 );
-            var randomEnemy = Math.floor(Math.random() * 10 );
-
-            if(randomY < 2){
-                this.stage.insert(new Q.PlatformFutbol({y:this.platformY[randomY] }));
-            } else {
-                this.stage.insert(new Q.PlatformFutbol());
-            }
-            
-            switch(randomEnemy) {
-                case 0:
+                case 12:
                     this.stage.insert(new Q.Arbitro1({y:this.enemiesY[randomY] }));
                     break;
-                case 1:
+                case 13:
                     this.stage.insert(new Q.Arbitro2({y:this.enemiesY[randomY] }));
                     break;
-                case 2:
+                case 14:
                     this.stage.insert(new Q.Ganma({y:this.enemiesY[randomY] }));
                     break;
-                case 3:
+                case 15:
                     this.stage.insert(new Q.Condor({y:200 }));
                     break;
-                case 4:
+                case 16:
                     this.stage.insert(new Q.Robben());
                     break;
-                case 5:
+                case 17:
                     this.stage.insert(new Q.Ball({y:this.enemiesY[randomY] }));
+                    break;
+                default:
                     break;
             }
             currentEnemies++;
@@ -149,7 +107,10 @@ Q.GameObject.extend("FutbolLauncher",{
     }      
 });
 
+
+
 Q.GameObject.extend("CollectableLauncher", {
+    collectable: [-10, 350, 750],
     init: function() {
         this.p = {
             launchDelay: 0.7,
@@ -161,9 +122,26 @@ Q.GameObject.extend("CollectableLauncher", {
         this.p.launch -= dt;
         if(this.p.launch < 0) {
             var random = Math.floor(Math.random() * 2);
-            var randomY = Math.floor(Math.random() * 400) + 300;
-            if(random == 0) {this.stage.insert(new Q.Coin({y:randomY}));}
-            if (random == 1) {this.stage.insert(new Q.Icecream({y:randomY})); }
+            var randomY = Math.floor(Math.random() * 3);
+            if(random == 0) {this.stage.insert(new Q.Coin({y:this.collectable[randomY]}));}
+            if (random == 1) {this.stage.insert(new Q.Icecream({y:this.collectable[randomY]})); }
+            this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
+        }          
+    }    
+});
+
+Q.GameObject.extend("FloorLauncher", {
+    init: function() {
+        this.p = {
+            launchDelay: 2.7,
+            launchRandom: 1,
+            launch: 1
+        }
+    },      
+    update: function(dt) {
+        this.p.launch -= dt;
+        if(this.p.launch < 0) {
+            this.stage.insert(new Q.PlatformPisoRussia());
             this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
         }          
     }    

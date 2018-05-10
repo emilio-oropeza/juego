@@ -21,5 +21,6 @@ var currentPlatforms = 0;
 var currentBullets = 0;
 var COIN_VAL = 50;
 var ICECREAM_VAL = 75;
+var currentStage= 0;
 
 Q.gravityY = 2000;

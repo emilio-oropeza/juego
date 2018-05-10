@@ -31,14 +31,14 @@ Q.Sprite.extend("Collectable", {
             Q.audio.play('coin.wav');
             this.destroy();
             if(obj.p.score >= 1000){
-                if(obj.p.currentStage === 0){   
+                if(currentStage === 0){   
                     Q.stageScene("russia");          
-                    obj.p.currentStage = 1;       
+                    currentStage = 1;       
                     obj.p.score = 0;
                     Q.stageScene('hud', 3, obj.p);
-                } else if(obj.p.currentStage === 1){          
+                } else if(currentStage === 1){          
                     Q.stageScene("futbol");        
-                    obj.p.currentStage = 2;  
+                    currentStage = 2;  
                     obj.p.score = 0;
                     Q.stageScene('hud', 3, obj.p);
                 }
@@ -62,14 +62,14 @@ Q.Sprite.extend("Collectable", {
             Q.audio.play('coin.wav');
             this.destroy();
             if(obj.p.score >= 1000){
-                if(obj.p.currentStage === 0){   
+                if(currentStage === 0){   
                     Q.stageScene("russia");          
-                    obj.p.currentStage = 1;       
+                    currentStage = 1;       
                     obj.p.score = 0;
                     Q.stageScene('hud', 3, obj.p);
-                } else if(obj.p.currentStage === 1){          
+                } else if(currentStage === 1){          
                     Q.stageScene("futbol");        
-                    obj.p.currentStage = 2;  
+                    currentStage = 2;  
                     obj.p.score = 0;
                     Q.stageScene('hud', 3, obj.p);
                 }

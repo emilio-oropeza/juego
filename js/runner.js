@@ -1,7 +1,7 @@
 window.addEventListener("load",function() {
       
     Q.load("juan.json, juan.png, "+
-            "life_counts.png, random.png, platforms.png, platforms.json, gameOVER.jpg,"+
+            "random.png, platforms.png, platforms.json, gameOVER.jpg,"+
             "snow_background.png, snow_piso.png," +
             "rusia_background.png, rusia_piso.png," +
             "futbol_background.png, futbol_piso.png," +

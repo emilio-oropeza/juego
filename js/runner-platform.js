@@ -8,7 +8,7 @@ Q.Sprite.extend("Platform", {
             gravity: 0,
             vy: 0,
             ay: 0,
-            y: 560
+            y: 530
         }));
 
         this.p.points = this.p.standingPoints;
@@ -38,7 +38,7 @@ Q.Platform.extend("PlatformFutbol", {
         this._super(p,{
             sheet: "platFutbol",
             sprite: "platFutbol",
-            standingPoints: [ [ -205, -61], [ 205, -61 ], [205, 61], [-205, 61]],
+            points: [ [ -205, -61], [ 205, -61 ], [205, 61], [-205, 61]],
         });
     }
 });
@@ -48,7 +48,7 @@ Q.Platform.extend("PlatformRussia", {
         this._super(p,{
             sheet: "platRussia",
             sprite: "platRussia",
-            standingPoints: [ [ -205, -61], [ 205, -61 ], [205, 61], [-205, 61]]
+            points: [ [ -205, -61], [ 205, -61 ], [205, 61], [-205, 61]]
         });
     }
 });
@@ -58,7 +58,61 @@ Q.Platform.extend("PlatformSnow", {
         this._super(p,{
             sheet: "platSnow",
             sprite: "platSnow",
-            standingPoints: [ [ -219, -61], [ 219, -61 ], [219, 61], [-219, 61]],
+            points: [ [ -219, -61], [ 219, -61 ], [219, 61], [-219, 61]],
         });
+    }
+});
+
+Q.Platform.extend("PlatformPisoSnow", {
+    init: function(p) {
+        var player = Q("Player").first();
+        this._super(p,{
+            asset: "rusia_piso.png",
+            x: player.p.x + Q.width + 500,
+            y: 1000,
+            points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]
+        });
+    },
+    step: function(dt){
+        var player = Q("Player").first();
+        if(undefined !== this && player.p.x - this.p.x > 2000) {
+            this.destroy();
+        }
+    }
+});
+
+Q.Platform.extend("PlatformPisoRussia", {
+    init: function(p) {
+        var player = Q("Player").first();
+        this._super(p,{
+            asset: "rusia_piso.png",
+            x: player.p.x + Q.width + 500,
+            y: 1000,
+            points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]
+        });
+    },
+    step: function(dt){
+        var player = Q("Player").first();
+        if(undefined !== this && player.p.x - this.p.x > 2000) {
+            this.destroy();
+        }
+    }
+});
+
+Q.Platform.extend("PlatformPisoFutbol", {
+    init: function(p) {
+        var player = Q("Player").first();
+        this._super(p,{
+            asset: "rusia_piso.png",
+            x: player.p.x + Q.width + 500,
+            y: 1000,
+            points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]
+        });
+    },
+    step: function(dt){
+        var player = Q("Player").first();
+        if(undefined !== this && player.p.x - this.p.x > 2000) {
+            this.destroy();
+        }
     }
 });
