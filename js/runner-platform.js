@@ -67,7 +67,7 @@ Q.Platform.extend("PlatformPisoSnow", {
     init: function(p) {
         var player = Q("Player").first();
         this._super(p,{
-            asset: "rusia_piso.png",
+            asset: "snow_piso.png",
             x: player.p.x + Q.width + 500,
             y: 1000,
             points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]
@@ -103,7 +103,7 @@ Q.Platform.extend("PlatformPisoFutbol", {
     init: function(p) {
         var player = Q("Player").first();
         this._super(p,{
-            asset: "rusia_piso.png",
+            asset: "futbol_piso.png",
             x: player.p.x + Q.width + 500,
             y: 1000,
             points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]

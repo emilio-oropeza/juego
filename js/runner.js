@@ -2,9 +2,13 @@ window.addEventListener("load",function() {
       
     Q.load("juan.json, juan.png, "+
             "random.png, platforms.png, platforms.json, gameOVER.jpg,"+
-            "snow_background.png, snow_piso.png," +
-            "rusia_background.png, rusia_piso.png," +
-            "futbol_background.png, futbol_piso.png," +
+            "start_background.jpg, jugar_btn.png," +
+            "level0.jpg, level1.jpg, level2.jpg, level3.jpg, level4.jpg," +
+            "level5.jpg, level6.jpg, level7.jpg, level8.jpg, level9.jpg, level10.jpg," +
+            "gameover_background.jpg, repeat_Idle.png, share_Idle.png, marcador.png," +
+            "snow_background.png, snow_piso.png, snow_piso1.png," +
+            "rusia_background.png, rusia_piso.png, rusia_piso1.png," +
+            "futbol_background.png, futbol_piso.png, futbol_piso1.png," +
             "enemies.png, enemies.json, bullets.png, bullets.json," +
             "collectables.png, collectables.json, coin.wav",
     function() {
@@ -91,11 +95,8 @@ window.addEventListener("load",function() {
             move: { frames: [0], rate: 1/1, flip: false, loop: true },
             dead: { frames: [0], rate: 1/1, flip: false, loop: true }
         });
-        Q.stageScene("snow");
-        Q.stageScene('hud', 3, Q('Player').first().p);
+        Q.stageScene("start");
       
-    });
-    
-    
+    });    
 });
     

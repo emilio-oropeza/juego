@@ -95,11 +95,9 @@ Q.Sprite.extend("Player",{
     },
 
     resetLevel: function() {
-        Q.stageScene("snow"); 
-        this.p.strength = 100;
-        this.p.score = 0;
-        this.animate({opacity: 1});
         currentStage = 0;
-        Q.stageScene('hud', 3, this.p);
+        var player = Q('Player').first().p;
+        Q.stageScene(null, 3); 
+        Q.stageScene("gameover", 0, player);  
     }
 });

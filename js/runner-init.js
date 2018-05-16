@@ -1,10 +1,10 @@
-var Q = window.Q = Quintus({ development: true, audioSupported: [ 'wav','mp3','ogg' ] })
+var Q = window.Q = Quintus({ audioSupported: [ 'wav','mp3','ogg' ] })
 	.include("Sprites, Scenes, Input, 2D, Anim, Touch, UI, Audio")
 	.setup({
 		width:   2330,
 		height:  1458,
 		scaleToFit: true 
-	}).enableSound();
+	}).touch().enableSound();
 
 Q.input.joypadControls();
 Q.input.keyboardControls({

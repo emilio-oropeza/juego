@@ -141,7 +141,18 @@ Q.GameObject.extend("FloorLauncher", {
     update: function(dt) {
         this.p.launch -= dt;
         if(this.p.launch < 0) {
-            this.stage.insert(new Q.PlatformPisoRussia());
+            if ( currentStage === 0) {
+                this.stage.insert(new Q.PlatformPisoSnow());
+            }
+
+            if ( currentStage === 1) {
+                this.stage.insert(new Q.PlatformPisoRussia());
+            }
+
+            if ( currentStage === 2) {
+                this.stage.insert(new Q.PlatformPisoFutbol());
+            }
+            
             this.p.launch = this.p.launchDelay + this.p.launchRandom * Math.random();
         }          
     }    
