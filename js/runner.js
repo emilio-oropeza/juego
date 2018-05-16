@@ -5,7 +5,7 @@ window.addEventListener("load",function() {
             "start_background.jpg, jugar_btn.png," +
             "level0.jpg, level1.jpg, level2.jpg, level3.jpg, level4.jpg," +
             "level5.jpg, level6.jpg, level7.jpg, level8.jpg, level9.jpg, level10.jpg," +
-            "gameover_background.jpg, repeat_Idle.png, share_Idle.png, marcador.png," +
+            "gameover_background.jpg, repeat_btn.png, share_btn.png, marcador.png," +
             "snow_background.png, snow_piso.png, snow_piso1.png," +
             "rusia_background.png, rusia_piso.png, rusia_piso1.png," +
             "futbol_background.png, futbol_piso.png, futbol_piso1.png," +

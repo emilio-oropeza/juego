@@ -78,7 +78,7 @@ Q.scene("gameover", function(stage){
 	}), container);
 
 	stage.insert(new Q.UI.Button({
-		asset: 'repeat_Idle.png',
+		asset: 'repeat_btn.png',
 		x: -150,
 		y: 400
 	}, function() {
@@ -87,7 +87,7 @@ Q.scene("gameover", function(stage){
 	}), container);
 
 	stage.insert(new Q.UI.Button({
-		asset: 'share_Idle.png',
+		asset: 'share_btn.png',
 		x: 150,
 		y: 400
 	}, function() {
