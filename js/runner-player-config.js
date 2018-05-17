@@ -39,14 +39,8 @@ Q.Sprite.extend("Player",{
             }
         }
 
-
         this.p.vx += (this.p.speed - this.p.vx)/4;
     
-        /*if(this.p.y > 750) {
-            this.p.y = 750;
-            this.p.landed = 1;
-            this.p.vy = 0;
-        } else */
         if(this.p.y > 1500){
             this.resetLevel();
         }
@@ -99,5 +93,6 @@ Q.Sprite.extend("Player",{
         var player = Q('Player').first().p;
         Q.stageScene(null, 3); 
         Q.stageScene("gameover", 0, player);  
+        Q.totalScore = 0;
     }
 });

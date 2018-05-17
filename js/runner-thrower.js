@@ -28,18 +28,6 @@ Q.GameObject.extend("Launcher",{
                     this.stage.insert(new Q.PlatformFutbol({y:this.platformY[randomY] }));
                 }
                 
-            } else {
-                if ( currentStage === 0) {
-                    this.stage.insert(new Q.PlatformSnow());
-                }
-
-                if ( currentStage === 1) {
-                    this.stage.insert(new Q.PlatformRussia());
-                }
-
-                if ( currentStage === 2) {
-                    this.stage.insert(new Q.PlatformFutbol());
-                }
             }
             
             switch(randomEnemy) {

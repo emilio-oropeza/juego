@@ -105,7 +105,7 @@ Q.Platform.extend("PlatformPisoFutbol", {
         this._super(p,{
             asset: "futbol_piso.png",
             x: player.p.x + Q.width + 500,
-            y: 1000,
+            y: 990,
             points: [ [ -1665, -125], [ 1665, -125 ], [1665, 125], [-1665, 125]]
         });
     },

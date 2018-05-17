@@ -4,7 +4,7 @@ Q.Sprite.extend("Enemy", {
         this._super(p, Q._defaults(defaults || {}, {
             x: player.p.x + Q.width + 50,
             type: Q.SPRITE_ENEMY,
-            collisionMask: Q.SPRITE_DEFAULT,
+            collisionMask: Q.SPRITE_DEFAULT | Q.SPRITE_PLATFORM,
             gravity: 0,
             vy: 0,
             ay: 0,

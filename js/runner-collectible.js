@@ -27,6 +27,7 @@ Q.Sprite.extend("Collectable", {
     sensor: function(obj) {
         if (obj.p.sprite === "juan"){            
             obj.p.score += COIN_VAL;
+            Q.totalScore += COIN_VAL;
             Q.stageScene('hud', 3, obj.p);
             Q.audio.play('coin.wav');
             this.destroy();
@@ -58,6 +59,7 @@ Q.Sprite.extend("Collectable", {
     sensor: function(obj) {
         if (obj.p.sprite === "juan"){
             obj.p.score += ICECREAM_VAL;
+            Q.totalScore += ICECREAM_VAL;
             Q.stageScene('hud', 3, obj.p);
             Q.audio.play('coin.wav');
             this.destroy();

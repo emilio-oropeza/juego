@@ -19,6 +19,9 @@ Q.scene("start", function(stage){
 
 Q.scene('hud',function(stage) {
 	var asset = "level" + parseInt(stage.options.score/100) + ".jpg";
+	if (currentStage == 2) {
+		asset = "level10.jpg";
+	}
 	var container = stage.insert(new Q.UI.Container({
 		w: 600,
 		h: 400,
@@ -37,7 +40,7 @@ Q.scene('hud',function(stage) {
 	stage.insert(new Q.UI.Text({
 		x: -300, 
 		y: 0,
-		label: "" + stage.options.score,
+		label: "" + Q.totalScore,
 		color: "white", 
 		size: 100,
 		align: "left" 
@@ -46,7 +49,6 @@ Q.scene('hud',function(stage) {
 
 
 Q.scene("gameover", function(stage){
-	var score = stage.options.score;
 	stage.insert(new Q.Repeater({ 
 		asset: "gameover_background.jpg",
 		scale: 1.35,
@@ -71,7 +73,7 @@ Q.scene("gameover", function(stage){
 	}), container);
 
 	stage.insert(new Q.UI.Text({ 
-		label: score + "",
+		label: Q.totalScore + "",
 		color: "white",
 		size: 160,
 		y: 40

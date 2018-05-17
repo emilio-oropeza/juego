@@ -24,3 +24,4 @@ var ICECREAM_VAL = 75;
 var currentStage= 0;
 
 Q.gravityY = 2000;
+Q.totalScore = 0;
