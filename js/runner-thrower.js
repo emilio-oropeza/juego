@@ -4,16 +4,16 @@ Q.GameObject.extend("Launcher",{
     platformY: [150, 530],
     init: function() {
       this.p = {
-        launchDelay: 0.7,
+        launchDelay: 0.2,
         launchRandom: 2,
-        launch: 6
+        launch: 7
       }
     },      
     update: function(dt) {
       this.p.launch -= dt;
         if(this.p.launch < 0) {
             var randomY = Math.floor(Math.random() * 3 );
-            var randomEnemy = Math.floor(Math.random() * 25 );
+            var randomEnemy = Math.floor(Math.random() * 19 );
 
             if(randomY < 2){
                 if ( currentStage === 0) {
