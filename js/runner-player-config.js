@@ -94,5 +94,6 @@ Q.Sprite.extend("Player",{
         Q.stageScene(null, 3); 
         Q.stageScene("gameover", 0, player);  
         Q.totalScore = 0;
+        Q.audio.stop("nieve.wav");
     }
 });

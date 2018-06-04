@@ -10,6 +10,7 @@ window.addEventListener("load",function() {
             "rusia_background.png, rusia_piso.png, rusia_piso1.png," +
             "futbol_background.png, futbol_piso.png, futbol_piso1.png," +
             "enemies.png, enemies.json, bullets.png, bullets.json," +
+            "inicio.wav, nieve.wav, muerte.wav," +
             "collectables.png, collectables.json, coin.wav",
     function() {
         Q.compileSheets("juan.png","juan.json");

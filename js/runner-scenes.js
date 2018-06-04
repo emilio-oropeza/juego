@@ -1,4 +1,5 @@
 Q.scene("start", function(stage){
+	Q.audio.play('inicio.wav',{ loop: true });
 	stage.insert(new Q.Repeater({ 
 		asset: "start_background.jpg",
 		scale: 1.35,
@@ -14,6 +15,7 @@ Q.scene("start", function(stage){
 	}, function() {
 		Q.stageScene("snow");
 		Q.stageScene('hud', 3, Q('Player').first().p);
+		Q.audio.stop('inicio.wav');
 	}));
 });
 
@@ -49,6 +51,7 @@ Q.scene('hud',function(stage) {
 
 
 Q.scene("gameover", function(stage){
+	Q.audio.play('muerte.wav',{ loop: true });
 	stage.insert(new Q.Repeater({ 
 		asset: "gameover_background.jpg",
 		scale: 1.35,
@@ -84,6 +87,7 @@ Q.scene("gameover", function(stage){
 		x: -150,
 		y: 400
 	}, function() {
+		Q.audio.stop('muerte.wav');
 		Q.stageScene("snow");
 		Q.stageScene('hud', 3, Q('Player').first().p);
 	}), container);
@@ -98,30 +102,30 @@ Q.scene("gameover", function(stage){
 });
 
 Q.scene("snow",function(stage) {
-		
-		stage.insert(new Q.Repeater({ 
-			asset:"snow_background.png",
-			speedX: 1.0,
-			repeatY: false,
-			y:-163
-		}));
+	Q.audio.play('nieve.wav',{ loop: true });
+	stage.insert(new Q.Repeater({ 
+		asset:"snow_background.png",
+		speedX: 1.0,
+		repeatY: false,
+		y:-163
+	}));
+
+	stage.insert(new Q.Repeater({
+		asset: "snow_piso1.png",
+		repeatY: false,
+		speedX: 1.0,
+		y: 440 
+	}));
+
+	stage.insert(new Q.Launcher());
+	stage.insert(new Q.CollectableLauncher());
+	stage.insert(new Q.FloorLauncher());
+	stage.insert(new Q.Player());
+	stage.insert(new Q.PlatformPisoSnow());
 	
-		stage.insert(new Q.Repeater({
-			asset: "snow_piso1.png",
-			repeatY: false,
-			speedX: 1.0,
-			y: 440 
-		}));
-	
-		stage.insert(new Q.Launcher());
-		stage.insert(new Q.CollectableLauncher());
-		stage.insert(new Q.FloorLauncher());
-		stage.insert(new Q.Player());
-		stage.insert(new Q.PlatformPisoSnow());
-		
-		stage.add("viewport");
-	
-	});
+	stage.add("viewport");
+
+});
 
 	Q.scene("russia",function(stage) {
 		

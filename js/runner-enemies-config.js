@@ -27,6 +27,9 @@ Q.Sprite.extend("Enemy", {
         if(this.p.dead) {
             this.del('2d');
             this.p.deadTimer++;
+            player.p.score += ENEMY_VAL;
+            Q.totalScore += ENEMY_VAL ;
+            Q.stageScene('hud', 3, player.p);
             if (this.p.deadTimer > 24) {
                 // Dead for 24 frames, remove it.
                 this.destroy();
