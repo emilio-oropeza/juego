@@ -121,7 +121,7 @@ Q.scene("snow",function(stage) {
 	stage.insert(new Q.CollectableLauncher());
 	stage.insert(new Q.FloorLauncher());
 	stage.insert(new Q.Player());
-	stage.insert(new Q.PlatformPisoSnow());
+	stage.insert(new Q.PlatformPisoSnow({x: 1000}));
 	
 	stage.add("viewport");
 

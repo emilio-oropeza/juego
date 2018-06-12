@@ -7,7 +7,7 @@ Q.Sprite.extend("Player",{
             collisionMask: Q.SPRITE_DEFAULT | Q.SPRITE_ENEMY | Q.SPRITE_PLATFORM | Q.SPRITE_COLLECTABLE, 
             type: Q.SPRITE_PLAYER,
             x: 40,
-            y: -3000,
+            y: 0,
             standingPoints: [ [ -60, 102.5], [ -60, -102.5 ], [60,-102.5], [60,102.5]],
             speed: 900,
             jump: -1300,
