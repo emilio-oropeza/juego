@@ -4,9 +4,9 @@ Q.GameObject.extend("Launcher",{
     platformY: [150, 530],
     init: function() {
       this.p = {
-        launchDelay: 0.2,
-        launchRandom: 2,
-        launch: 7
+        launchDelay: 0.5,
+        launchRandom: 4,
+        launch: 5
       }
     },      
     update: function(dt) {

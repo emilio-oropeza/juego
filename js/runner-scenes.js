@@ -19,11 +19,7 @@ Q.scene("start", function(stage){
 	}));
 });
 
-Q.scene('hud',function(stage) {
-	var asset = "level" + parseInt(stage.options.score/100) + ".jpg";
-	if (currentStage == 2) {
-		asset = "level10.jpg";
-	}
+Q.scene('hud',function(stage) {	
 	var container = stage.insert(new Q.UI.Container({
 		w: 600,
 		h: 400,
@@ -31,8 +27,8 @@ Q.scene('hud',function(stage) {
 		y: 0
 	}));
 	stage.insert(new Q.Repeater({ 
-		asset: asset,
-		scale: 1.35,
+		asset: 'score_hub.png',
+		scale: 0.5,
 		speedX: 1.0,
 		repeatY: false,
 		repeatX: false,
@@ -40,12 +36,12 @@ Q.scene('hud',function(stage) {
 		x: -125
 	}), container);
 	stage.insert(new Q.UI.Text({
-		x: -300, 
-		y: 0,
+		x: 300, 
+		y: 120,
 		label: "" + Q.totalScore,
 		color: "white", 
 		size: 100,
-		align: "left" 
+		align: "right" 
 	}),	container);
 });
 

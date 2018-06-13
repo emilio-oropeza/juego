@@ -2,7 +2,7 @@ window.addEventListener("load",function() {
       
     Q.load("juan.json, juan.png, "+
             "random.png, platforms.png, platforms.json, gameOVER.jpg,"+
-            "start_background.jpg, jugar_btn.png," +
+            "start_background.jpg, jugar_btn.png, score_hub.png," +
             "level0.jpg, level1.jpg, level2.jpg, level3.jpg, level4.jpg," +
             "level5.jpg, level6.jpg, level7.jpg, level8.jpg, level9.jpg, level10.jpg," +
             "gameover_background.jpg, repeat_btn.png, share_btn.png, marcador.png," +
