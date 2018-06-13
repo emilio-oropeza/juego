@@ -15,7 +15,8 @@ Q.Sprite.extend("Player",{
             score: 0,
             lives: 3,
             onPlatform: false,
-            scale: 1.3
+            scale: 1.3,
+            jumps: 0
         });
     
         this.p.points = this.p.standingPoints;
@@ -52,7 +53,11 @@ Q.Sprite.extend("Player",{
         if(Q.inputs['up'] && this.p.landed > 0) {
             this.p.vy = this.p.jump;
             this.p.onPlatform = false;
-        } 
+            this.p.jumps = 1;
+        } else if(Q.inputs['up'] && this.p.jumps == 1) {
+            this.p.vy = this.p.jump;
+            this.p.jumps = 2;
+        }
     
         this.p.points = this.p.standingPoints;
         if(this.p.landed) {

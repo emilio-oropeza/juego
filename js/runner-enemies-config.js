@@ -5,7 +5,7 @@ Q.Sprite.extend("Enemy", {
             x: player.p.x + Q.width + 50,
             type: Q.SPRITE_ENEMY,
             collisionMask: Q.SPRITE_DEFAULT | Q.SPRITE_PLATFORM,
-            gravity: 0,
+            gravity: 80,
             vy: 0,
             ay: 0,
             bulletSpeed: 500,
@@ -129,7 +129,8 @@ Q.Enemy.extend("Balls", {
             shootYmove: undefined,
             collisionMask: Q.SPRITE_DEFAULT | Q.SPRITE_PLATFORM,
             scale: 0.7,
-            y: -300
+            y: -300,
+            gravity: 0
             //y: 550
         }));
     },
@@ -165,7 +166,8 @@ Q.Enemy.extend("Runners", {
             shootYmove: undefined,
             collisionMask: Q.SPRITE_DEFAULT,
             scale: 0.7,
-            y: 750
+            y: 750,
+            gravity: 0
         }));
     },
     step: function(dt) {

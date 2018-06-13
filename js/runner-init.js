@@ -19,9 +19,9 @@ Q.SPRITE_COLLECTABLE = 3;
 var currentEnemies = 0;
 var currentPlatforms = 0;
 var currentBullets = 0;
-var COIN_VAL = 50;
-var ICECREAM_VAL = 75;
-var ENEMY_VAL = 100;
+var COIN_VAL = 1;
+var ICECREAM_VAL = 2;
+var ENEMY_VAL = 5;
 var currentStage= 0;
 
 Q.gravityY = 2000;
